@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Invitación para Majo</title>
-
-  <!-- ARCHIVOS DE IMAGEN Y VIDEO EN CARPETA LOCAL (subir a GitHub) -->
-  <!-- Cielo estrellado (pantallas 1-4): ./img/cielo-estrellado.jpg -->
-  <!-- Video de Berk (pantallas 5-6): ./video/berk.mp4 -->
-  <!-- Video de Furias (pantallas 7-8): ./video/furias.mp4 -->
 
   <style>
     body, html {
@@ -20,6 +15,7 @@
       background-color: black;
       overflow: hidden;
     }
+
     .screen {
       display: none;
       justify-content: center;
@@ -29,9 +25,11 @@
       padding: 20px;
       position: relative;
     }
+
     .visible {
       display: flex;
     }
+
     .text {
       font-size: 1.5em;
       white-space: pre-wrap;
@@ -41,6 +39,7 @@
       z-index: 1;
       text-shadow: 2px 2px 4px #000;
     }
+
     button {
       padding: 10px 20px;
       font-size: 1em;
@@ -51,6 +50,7 @@
       cursor: pointer;
       z-index: 1;
     }
+
     .background-video {
       position: absolute;
       top: 0;
@@ -60,10 +60,7 @@
       object-fit: cover;
       z-index: 0;
     }
-    .rotate-horizontal {
-      transform: rotate(90deg) scale(1.78);
-      transform-origin: center center;
-    }
+
     .overlay {
       position: relative;
       z-index: 1;
@@ -73,9 +70,11 @@
 <body>
 
 <div id="screen1" class="screen visible" style="background-image: url('./img/cielo-estrellado.jpg'); background-size: cover; background-position: center;">
-  <div class="text">Reproduce esta canción mientras navegas en esta página porfavor jaja
-<a href="https://music.youtube.com/watch?v=BM8gC3Oj0OA&si=nES7vB2EtxURgMg4" target="_blank" style="color: #87cefa; display: block; margin-top: 10px;">Reproducir canción</a></div>
-  <button onclick="nextScreen(2)">Haz clic aquí cuando empiece la canción</button>
+  <div class="text">
+    Favor de reproducir esta canción en otra pestaña mientras continúas aquí
+    <a href="https://music.youtube.com/watch?v=BM8gC3Oj0OA&si=nES7vB2EtxURgMg4" target="_blank" style="color: #87cefa; display: block; margin-top: 10px;">🎵 Escuchar canción</a>
+  </div>
+  <button onclick="nextScreen(2)">Haz clic para continuar</button>
 </div>
 
 <div id="screen2" class="screen" style="background-image: url('./img/cielo-estrellado.jpg'); background-size: cover; background-position: center;">
@@ -94,7 +93,7 @@
 </div>
 
 <div id="screen5" class="screen">
-  <video autoplay muted loop playsinline class="background-video rotate-horizontal">
+  <video autoplay muted loop playsinline class="background-video">
     <source src="./video/berk.mp4" type="video/mp4">
     Tu navegador no soporta video HTML5.
   </video>
@@ -106,7 +105,7 @@
 </div>
 
 <div id="screen6" class="screen">
-  <video autoplay muted loop playsinline class="background-video rotate-horizontal">
+  <video autoplay muted loop playsinline class="background-video">
     <source src="./video/berk.mp4" type="video/mp4">
     Tu navegador no soporta video HTML5.
   </video>
@@ -116,7 +115,7 @@
 </div>
 
 <div id="screen7" class="screen">
-  <video autoplay muted loop playsinline class="background-video rotate-horizontal">
+  <video autoplay muted loop playsinline class="background-video">
     <source src="./video/furias.mp4" type="video/mp4">
     Tu navegador no soporta video HTML5.
   </video>
@@ -128,7 +127,7 @@
 </div>
 
 <div id="screen8" class="screen">
-  <video autoplay muted loop playsinline class="background-video rotate-horizontal">
+  <video autoplay muted loop playsinline class="background-video">
     <source src="./video/furias.mp4" type="video/mp4">
     Tu navegador no soporta video HTML5.
   </video>
@@ -140,7 +139,7 @@
 <script>
 const texts = {
   2: "Majo...\n\nHe querido decirte esto desde hace tiempo...\n\nMe encantaría invitarte a una cita muy especial...",
-  3: "Llevo esperando desde el 2023 por esto...\n\nNunca imaginé conocerte,\npero ahora es una experiencia\nque no imagino sin ti",
+  3: "Llevo esperando desde el 2023 por esto...\n\nNunca imaginé conocerte,\npero ahora es una experiencia\nque no imagino sin ti.",
   4: "Y si el destino ya está escrito,\n\nOjalá el mío sea contigo...",
   5: "¿Te gustaría acompañarme\neste viernes 13 de junio a ver\n¿Cómo entrenar a tu dragón?",
   6: "Lo entiendo...\n\nAun así, gracias por tu tiempo.\nCuídate mucho, Majo.",
