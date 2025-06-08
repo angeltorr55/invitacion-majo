@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación Especial para Majo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="pantalla fade" id="pantalla1">
+    <div class="pergamino">
+      <p>Antes de comenzar…<br>
+      <a href="https://youtu.be/S0gFiROxYC0" target="_blank">reproduce esta melodía en otra pestaña</a><br>
+      y deja que acompañe esta pequeña aventura.</p>
+      <button onclick="mostrarPantalla(2)">Haz clic para continuar</button>
+    </div>
+  </div>
+
+  <div class="pantalla fade" id="pantalla2">
+    <p class="texto" data-text="Majo…\nHe querido decirte esto desde hace tiempo…\nMe encantaría invitarte a una cita muy especial…"></p>
+    <button onclick="mostrarPantalla(3)">Haz clic para continuar</button>
+  </div>
+
+  <div class="pantalla fade" id="pantalla3">
+    <p class="texto" data-text="Desde 2023 guardo este deseo en silencio.\nNunca imaginé conocerte…\nY ahora, no imagino esta experiencia sin ti."></p>
+    <button onclick="mostrarPantalla(4)">Haz clic para continuar</button>
+  </div>
+
+  <div class="pantalla fade" id="pantalla4">
+    <p class="texto" data-text="Y si vamos a volar, que sea contigo…"></p>
+    <button onclick="mostrarPantalla(5)">Haz clic para continuar</button>
+  </div>
+
+  <div class="pantalla fade" id="pantalla5">
+    <p class="texto" data-text="¿Volarías conmigo este viernes 13 de junio…\na ver 'Cómo entrenar a tu dragón'\ny compartir una noche mágica?"></p>
+    <button onclick="mostrarPantalla(7)">Sí me gustaría profe</button>
+    <button onclick="mostrarPantalla(6)">No quiero</button>
+  </div>
+
+  <div class="pantalla fade" id="pantalla6">
+    <p class="texto" data-text="Lo entiendo…\nAun así, gracias por tu tiempo.\nCuídate mucho, Majo."></p>
+  </div>
+
+  <div class="pantalla fade" id="pantalla7">
+    <p class="texto" data-text="Ya tengo las entradas listas 🌌\nSon a las 6 en Plaza Esfera.\n¿Te gustaría que comamos juntos… antes o después de la película?"></p>
+    <button onclick="mostrarPantalla(8)">Antes</button>
+    <button onclick="mostrarPantalla(8)">Después</button>
+  </div>
+
+  <div class="pantalla fade" id="pantalla8">
+    <p class="texto" data-text="Espero con ilusión el momento…\nen que nuestras historias se crucen en esta cita 🐲\n(esta vez ya aprendí a registrar las respuestas jaja)"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

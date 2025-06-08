@@ -1,0 +1,86 @@
+/* style.css */
+
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background-color: black;
+  color: white;
+  overflow: hidden;
+}
+
+.pantalla {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  padding: 2rem;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.pantalla.fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pantalla.visible {
+  display: flex;
+  opacity: 1;
+  pointer-events: all;
+  z-index: 10;
+}
+
+button {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #ffcc70;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ffb347;
+}
+
+.pergamino {
+  background: url('img/pergamino.png') no-repeat center center;
+  background-size: contain;
+  padding: 4rem;
+  max-width: 600px;
+  width: 90%;
+  height: auto;
+  color: #4b2e12;
+  font-style: italic;
+}
+
+.texto {
+  white-space: pre-line;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  max-width: 90vw;
+}
+
+/* Fondos personalizados por pantalla */
+#pantalla2 {
+  background: url('img/estrellas.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#pantalla4 {
+  background: url('img/berk.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#pantalla5, #pantalla6, #pantalla7, #pantalla8 {
+  background: url('img/furias.jpg') no-repeat center center;
+  background-size: cover;
+}
