@@ -2,8 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Invitación para Majo</title>
+
+  <!-- ARCHIVOS DE IMAGEN Y VIDEO EN CARPETA LOCAL (subir a GitHub) -->
+  <!-- Cielo estrellado (pantallas 1-4): ./img/cielo-estrellado.jpg -->
+  <!-- Video de Berk (pantallas 5-6): ./video/berk.mp4 -->
+  <!-- Video de Furias (pantallas 7-8): ./video/furias.mp4 -->
 
   <style>
     body, html {
@@ -14,8 +19,8 @@
       text-align: center;
       background-color: black;
       overflow: hidden;
+      height: 100vh;
     }
-
     .screen {
       display: none;
       justify-content: center;
@@ -25,14 +30,12 @@
       padding: 20px;
       position: relative;
       opacity: 0;
-      transition: opacity 0.8s ease-in-out;
+      transition: opacity 1s ease;
     }
-
     .visible {
-      display: flex !important;
+      display: flex;
       opacity: 1;
     }
-
     .text {
       font-size: 1.5em;
       white-space: pre-wrap;
@@ -42,7 +45,6 @@
       z-index: 1;
       text-shadow: 2px 2px 4px #000;
     }
-
     button {
       padding: 10px 20px;
       font-size: 1em;
@@ -52,8 +54,11 @@
       color: white;
       cursor: pointer;
       z-index: 1;
+      transition: background-color 0.3s ease;
     }
-
+    button:hover {
+      background-color: #5599ff;
+    }
     .background-video {
       position: absolute;
       top: 0;
@@ -63,18 +68,27 @@
       object-fit: cover;
       z-index: 0;
     }
-
     .overlay {
       position: relative;
       z-index: 1;
+    }
+    a {
+      color: #87cefa;
+      display: block;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
 <div id="screen1" class="screen visible" style="background-image: url('./img/cielo-estrellado.jpg'); background-size: cover; background-position: center;">
-  <div class="text">Hola Majo, porfavor reproduce esta canción antes de continuar
-    <a href="https://youtu.be/xyMLkfDEvFQ" target="_blank" style="color: #87cefa; display: block; margin-top: 10px;">🎵 Reproducir canción misteriosa</a>
+  <div class="text">
+    Hola Majo, porfavor reproduce esta canción antes de continuar
+    <a href="https://youtu.be/xyMLkfDEvFQ" target="_blank" rel="noopener noreferrer">Reproducir canción misteriosa</a>
   </div>
   <button onclick="nextScreen(2)">Haz clic para continuar</button>
 </div>
@@ -96,19 +110,19 @@
 
 <div id="screen5" class="screen">
   <video autoplay muted loop playsinline class="background-video">
-    <source src="./video/berk.mp4" type="video/mp4">
+    <source src="./video/berk.mp4" type="video/mp4" />
     Tu navegador no soporta video HTML5.
   </video>
   <div class="overlay">
     <div class="text" id="text5"></div>
-    <button onclick="nextScreen(7)">Sí me gustaría profe</button>
-    <button onclick="nextScreen(6)" style="margin-left: 10px; background-color: crimson;">No quiero</button>
+    <button onclick="handleChoice(5, 'Sí me gustaría profe', 7)">Sí me gustaría profe</button>
+    <button onclick="handleChoice(5, 'No quiero', 6)" style="margin-left: 10px; background-color: crimson;">No quiero</button>
   </div>
 </div>
 
 <div id="screen6" class="screen">
   <video autoplay muted loop playsinline class="background-video">
-    <source src="./video/berk.mp4" type="video/mp4">
+    <source src="./video/berk.mp4" type="video/mp4" />
     Tu navegador no soporta video HTML5.
   </video>
   <div class="overlay">
@@ -118,61 +132,88 @@
 
 <div id="screen7" class="screen">
   <video autoplay muted loop playsinline class="background-video">
-    <source src="./video/furias.mp4" type="video/mp4">
+    <source src="./video/furias.mp4" type="video/mp4" />
     Tu navegador no soporta video HTML5.
   </video>
   <div class="overlay">
     <div class="text" id="text7"></div>
-    <button onclick="nextScreen(8)">Antes</button>
-    <button onclick="nextScreen(8)" style="margin-left: 10px;">Después</button>
+    <button onclick="handleChoice(7, 'Antes', 8)">Antes</button>
+    <button onclick="handleChoice(7, 'Después', 8)" style="margin-left: 10px;">Después</button>
   </div>
 </div>
 
 <div id="screen8" class="screen">
   <video autoplay muted loop playsinline class="background-video">
-    <source src="./video/furias.mp4" type="video/mp4">
+    <source src="./video/furias.mp4" type="video/mp4" />
     Tu navegador no soporta video HTML5.
   </video>
   <div class="overlay">
     <div class="text" id="text8"></div>
-    <div class="text" style="margin-top: 20px;">Te quiero mucho Majo, que nunca se te olvide...</div>
+    <p style="margin-top: 20px; font-size: 1.8em; font-weight: bold;">Te quiero mucho Majo, que nunca se te olvide...</p>
   </div>
 </div>
 
 <script>
-  const texts = {
-    2: "Majo...\n\nHe querido decirte esto desde hace tiempo...\n\nMe encantaría invitarte a una cita muy especial...",
-    3: "Llevo esperando desde el 2023 por esto...\n\nNunca imaginé conocerte,\npero ahora es una experiencia\nque no imagino sin ti.",
-    4: "Y si el destino ya está escrito,\n\nOjalá el mío sea contigo...",
-    5: "¿Te gustaría acompañarme\neste viernes 13 de junio a ver\n¿Cómo entrenar a tu dragón?",
-    6: "Lo entiendo...\n\nAun así, gracias por tu tiempo.\nCuídate mucho, Majo.",
-    7: "Ya compré las entradas\ny son alrededor de las 6 en Plaza Esfera.\n\n¿Te gustaría que pasemos a comer\nantes o después?",
-    8: "Espero con ansias verte\n(esta vez ya aprendí a registrar las respuestas jaja)"
-  };
+const scriptURL = 'https://script.google.com/macros/s/AKfycbx5RnaKPuFEZo3SltD5TbTi1iUyxrOM_77ikebP2Z9Hp-g_MZMEDGL4wUddmRX-IMmSIQ/exec';
 
-  function typeText(id, text, i = 0) {
-    if (i < text.length) {
-      document.getElementById("text" + id).innerText += text.charAt(i);
-      setTimeout(() => typeText(id, text, i + 1), 50);
-    }
+const texts = {
+  2: "Majo...\n\nHe querido decirte esto desde hace tiempo...\n\nMe encantaría invitarte a una cita muy especial...",
+  3: "Llevo esperando desde el 2023 por esto...\n\nNunca imaginé conocerte,\npero ahora es una experiencia\nque no imagino sin ti.",
+  4: "Y si el destino ya está escrito,\n\nOjalá el mío sea contigo...",
+  5: "¿Te gustaría acompañarme\neste viernes 13 de junio a ver\n¿Cómo entrenar a tu dragón?",
+  6: "Lo entiendo...\n\nAun así, gracias por tu tiempo.\nCuídate mucho, Majo.",
+  7: "Ya compré las entradas\ny son alrededor de las 6 en Plaza Esfera.\n\n¿Te gustaría que pasemos a comer\nantes o después?",
+  8: "Espero con ansias verte\n(esta vez ya aprendí a registrar las respuestas jaja)"
+};
+
+function typeText(id, text, i = 0) {
+  if (i < text.length) {
+    document.getElementById("text" + id).innerText += text.charAt(i);
+    setTimeout(() => typeText(id, text, i + 1), 50);
   }
+}
 
-  function nextScreen(number) {
-    document.querySelectorAll('.screen').forEach(s => {
+function nextScreen(number) {
+  const currentScreens = document.querySelectorAll('.screen.visible');
+  currentScreens.forEach(s => {
+    s.style.opacity = 0;
+    setTimeout(() => {
       s.classList.remove('visible');
-      setTimeout(() => s.style.display = 'none', 500);
-    });
+      // Show next screen
+      const screen = document.getElementById("screen" + number);
+      screen.classList.add('visible');
+      setTimeout(() => {
+        screen.style.opacity = 1;
+      }, 50);
 
-    const screen = document.getElementById("screen" + number);
-    screen.style.display = 'flex';
-    setTimeout(() => screen.classList.add("visible"), 50);
+      if (texts[number]) {
+        document.getElementById("text" + number).innerText = "";
+        typeText(number, texts[number]);
+      }
+    }, 1000);
+  });
+}
 
-    if (texts[number]) {
-      document.getElementById("text" + number).innerText = "";
-      typeText(number, texts[number]);
-    }
-  }
+// Envía la respuesta y luego cambia pantalla
+function handleChoice(pantalla, respuesta, siguientePantalla) {
+  sendResponse(pantalla, respuesta);
+  nextScreen(siguientePantalla);
+}
+
+function sendResponse(pantalla, respuesta) {
+  fetch(scriptURL, {
+    method: 'POST',
+    body: JSON.stringify({ pantalla, respuesta }),
+    headers: { 'Content-Type': 'application/json' },
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Respuesta guardada:', data);
+  })
+  .catch(error => {
+    console.error('Error al guardar respuesta:', error);
+  });
+}
 </script>
-
 </body>
 </html>
