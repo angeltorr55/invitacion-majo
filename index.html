@@ -24,10 +24,13 @@
       flex-direction: column;
       padding: 20px;
       position: relative;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
     }
 
     .visible {
-      display: flex;
+      display: flex !important;
+      opacity: 1;
     }
 
     .text {
@@ -70,8 +73,7 @@
 <body>
 
 <div id="screen1" class="screen visible" style="background-image: url('./img/cielo-estrellado.jpg'); background-size: cover; background-position: center;">
-  <div class="text">
-    Hola Majo, por favor reproduce esta canción antes de continuar
+  <div class="text">Hola Majo, porfavor reproduce esta canción antes de continuar
     <a href="https://youtu.be/xyMLkfDEvFQ" target="_blank" style="color: #87cefa; display: block; margin-top: 10px;">🎵 Reproducir canción misteriosa</a>
   </div>
   <button onclick="nextScreen(2)">Haz clic para continuar</button>
@@ -133,36 +135,44 @@
   </video>
   <div class="overlay">
     <div class="text" id="text8"></div>
+    <div class="text" style="margin-top: 20px;">Te quiero mucho Majo, que nunca se te olvide...</div>
   </div>
 </div>
 
 <script>
-const texts = {
-  2: "Majo...\n\nHe querido decirte esto desde hace tiempo...\n\nMe encantaría invitarte a una cita muy especial...",
-  3: "Llevo esperando desde el 2023 por esto...\n\nNunca imaginé conocerte,\npero ahora es una experiencia\nque no imagino sin ti.",
-  4: "Y si el destino ya está escrito,\n\nOjalá el mío sea contigo...",
-  5: "¿Te gustaría acompañarme\neste viernes 13 de junio a ver\n¿Cómo entrenar a tu dragón?",
-  6: "Lo entiendo...\n\nAun así, gracias por tu tiempo.\nCuídate mucho, Majo.",
-  7: "Ya compré las entradas\ny son alrededor de las 6 en Plaza Esfera.\n\n¿Te gustaría que pasemos a comer\nantes o después?",
-  8: "Espero con ansias verte\n(esta vez ya aprendí a registrar las respuestas jaja)\n\nTe quiero mucho Majo, que nunca se te olvide..."
-};
+  const texts = {
+    2: "Majo...\n\nHe querido decirte esto desde hace tiempo...\n\nMe encantaría invitarte a una cita muy especial...",
+    3: "Llevo esperando desde el 2023 por esto...\n\nNunca imaginé conocerte,\npero ahora es una experiencia\nque no imagino sin ti.",
+    4: "Y si el destino ya está escrito,\n\nOjalá el mío sea contigo...",
+    5: "¿Te gustaría acompañarme\neste viernes 13 de junio a ver\n¿Cómo entrenar a tu dragón?",
+    6: "Lo entiendo...\n\nAun así, gracias por tu tiempo.\nCuídate mucho, Majo.",
+    7: "Ya compré las entradas\ny son alrededor de las 6 en Plaza Esfera.\n\n¿Te gustaría que pasemos a comer\nantes o después?",
+    8: "Espero con ansias verte\n(esta vez ya aprendí a registrar las respuestas jaja)"
+  };
 
-function typeText(id, text, i = 0) {
-  if (i < text.length) {
-    document.getElementById("text" + id).innerText += text.charAt(i);
-    setTimeout(() => typeText(id, text, i + 1), 50);
+  function typeText(id, text, i = 0) {
+    if (i < text.length) {
+      document.getElementById("text" + id).innerText += text.charAt(i);
+      setTimeout(() => typeText(id, text, i + 1), 50);
+    }
   }
-}
 
-function nextScreen(number) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('visible'));
-  const screen = document.getElementById("screen" + number);
-  screen.classList.add("visible");
-  if (texts[number]) {
-    document.getElementById("text" + number).innerText = "";
-    typeText(number, texts[number]);
+  function nextScreen(number) {
+    document.querySelectorAll('.screen').forEach(s => {
+      s.classList.remove('visible');
+      setTimeout(() => s.style.display = 'none', 500);
+    });
+
+    const screen = document.getElementById("screen" + number);
+    screen.style.display = 'flex';
+    setTimeout(() => screen.classList.add("visible"), 50);
+
+    if (texts[number]) {
+      document.getElementById("text" + number).innerText = "";
+      typeText(number, texts[number]);
+    }
   }
-}
 </script>
+
 </body>
 </html>
