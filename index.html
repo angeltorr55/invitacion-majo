@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Invitación para Majo</title>
 
-  <!-- ARCHIVOS DE IMAGEN Y VIDEO EN CARPETA LOCAL (subir a GitHub) -->
-  <!-- Cielo estrellado (pantallas 1-4): ./img/cielo-estrellado.jpg -->
-  <!-- Video de Berk (pantallas 5-6): ./video/berk.mp4 -->
-  <!-- Video de Furias (pantallas 7-8): ./video/furias.mp4 -->
-
   <style>
     body, html {
       margin: 0;
@@ -31,6 +26,8 @@
       position: relative;
       opacity: 0;
       transition: opacity 1s ease;
+      background-size: cover;
+      background-position: center;
     }
     .visible {
       display: flex;
@@ -85,7 +82,7 @@
 </head>
 <body>
 
-<div id="screen1" class="screen visible" style="background-image: url('./img/cielo-estrellado.jpg'); background-size: cover; background-position: center;">
+<div id="screen1" class="screen visible" style="background-image: url('./img/cielo-estrellado.jpg');">
   <div class="text">
     Hola Majo, porfavor reproduce esta canción antes de continuar
     <a href="https://youtu.be/xyMLkfDEvFQ" target="_blank" rel="noopener noreferrer">Reproducir canción misteriosa</a>
@@ -93,17 +90,17 @@
   <button onclick="nextScreen(2)">Haz clic para continuar</button>
 </div>
 
-<div id="screen2" class="screen" style="background-image: url('./img/cielo-estrellado.jpg'); background-size: cover; background-position: center;">
+<div id="screen2" class="screen" style="background-image: url('./img/fondo2.jpg');">
   <div class="text" id="text2"></div>
   <button onclick="nextScreen(3)">Haz clic para continuar</button>
 </div>
 
-<div id="screen3" class="screen" style="background-image: url('./img/cielo-estrellado.jpg'); background-size: cover; background-position: center;">
+<div id="screen3" class="screen" style="background-image: url('./img/fondo3.jpg');">
   <div class="text" id="text3"></div>
   <button onclick="nextScreen(4)">Haz clic para continuar</button>
 </div>
 
-<div id="screen4" class="screen" style="background-image: url('./img/cielo-estrellado.jpg'); background-size: cover; background-position: center;">
+<div id="screen4" class="screen" style="background-image: url('./img/fondo4.jpg');">
   <div class="text" id="text4"></div>
   <button onclick="nextScreen(5)">Haz clic para continuar</button>
 </div>
