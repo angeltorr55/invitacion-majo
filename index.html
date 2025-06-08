@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invitación para Majo</title>
 
-  <!-- ARCHIVOS DE IMAGEN EN CARPETA LOCAL (subir a GitHub) -->
+  <!-- ARCHIVOS DE IMAGEN Y VIDEO EN CARPETA LOCAL (subir a GitHub) -->
   <!-- Cielo estrellado (pantallas 1-4): ./img/cielo-estrellado.jpg -->
-  <!-- Berk (pantallas 5-6): ./img/berk.jpg -->
-  <!-- Furia Nocturna y Luminosa (pantallas 7-8): ./img/furias.jpg -->
+  <!-- Video de Berk (pantallas 5-6): ./video/berk.mp4 -->
+  <!-- Video de Furias (pantallas 7-8): ./video/furias.mp4 -->
 
   <style>
     body, html {
@@ -18,6 +18,7 @@
       color: white;
       text-align: center;
       background-color: black;
+      overflow: hidden;
     }
     .screen {
       display: none;
@@ -25,9 +26,8 @@
       align-items: center;
       height: 100vh;
       flex-direction: column;
-      background-size: cover;
-      background-position: center;
       padding: 20px;
+      position: relative;
     }
     .visible {
       display: flex;
@@ -38,6 +38,8 @@
       max-width: 90%;
       line-height: 1.6em;
       margin-bottom: 20px;
+      z-index: 1;
+      text-shadow: 2px 2px 4px #000;
     }
     button {
       padding: 10px 20px;
@@ -47,50 +49,92 @@
       background-color: #1e90ff;
       color: white;
       cursor: pointer;
+      z-index: 1;
+    }
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .rotate-horizontal {
+      transform: rotate(90deg) scale(1.78);
+      transform-origin: center center;
+    }
+    .overlay {
+      position: relative;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
 
-<div id="screen1" class="screen visible" style="background-image: url('./img/cielo-estrellado.jpg');">
+<div id="screen1" class="screen visible" style="background-image: url('./img/cielo-estrellado.jpg'); background-size: cover; background-position: center;">
   <div class="text">Favor de reproducir esta canción en otra pestaña mientras continúas aquí
 <a href="https://music.youtube.com/watch?v=BM8gC3Oj0OA&si=nES7vB2EtxURgMg4" target="_blank" style="color: #87cefa; display: block; margin-top: 10px;">🎵 Escuchar canción</a></div>
   <button onclick="nextScreen(2)">Haz clic para continuar</button>
 </div>
 
-<div id="screen2" class="screen" style="background-image: url('./img/cielo-estrellado.jpg');">
+<div id="screen2" class="screen" style="background-image: url('./img/cielo-estrellado.jpg'); background-size: cover; background-position: center;">
   <div class="text" id="text2"></div>
   <button onclick="nextScreen(3)">Haz clic para continuar</button>
 </div>
 
-<div id="screen3" class="screen" style="background-image: url('./img/cielo-estrellado.jpg');">
+<div id="screen3" class="screen" style="background-image: url('./img/cielo-estrellado.jpg'); background-size: cover; background-position: center;">
   <div class="text" id="text3"></div>
   <button onclick="nextScreen(4)">Haz clic para continuar</button>
 </div>
 
-<div id="screen4" class="screen" style="background-image: url('./img/cielo-estrellado.jpg');">
+<div id="screen4" class="screen" style="background-image: url('./img/cielo-estrellado.jpg'); background-size: cover; background-position: center;">
   <div class="text" id="text4"></div>
   <button onclick="nextScreen(5)">Haz clic para continuar</button>
 </div>
 
-<div id="screen5" class="screen" style="background-image: url('./img/berk.jpg');">
-  <div class="text" id="text5"></div>
-  <button onclick="nextScreen(7)">Sí me gustaría profe</button>
-  <button onclick="nextScreen(6)" style="margin-left: 10px; background-color: crimson;">No quiero</button>
+<div id="screen5" class="screen">
+  <video autoplay muted loop playsinline class="background-video rotate-horizontal">
+    <source src="./video/berk.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+  <div class="overlay">
+    <div class="text" id="text5"></div>
+    <button onclick="nextScreen(7)">Sí me gustaría profe</button>
+    <button onclick="nextScreen(6)" style="margin-left: 10px; background-color: crimson;">No quiero</button>
+  </div>
 </div>
 
-<div id="screen6" class="screen" style="background-image: url('./img/berk.jpg');">
-  <div class="text" id="text6"></div>
+<div id="screen6" class="screen">
+  <video autoplay muted loop playsinline class="background-video rotate-horizontal">
+    <source src="./video/berk.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+  <div class="overlay">
+    <div class="text" id="text6"></div>
+  </div>
 </div>
 
-<div id="screen7" class="screen" style="background-image: url('./img/furias.jpg');">
-  <div class="text" id="text7"></div>
-  <button onclick="nextScreen(8)">Antes</button>
-  <button onclick="nextScreen(8)" style="margin-left: 10px;">Después</button>
+<div id="screen7" class="screen">
+  <video autoplay muted loop playsinline class="background-video rotate-horizontal">
+    <source src="./video/furias.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+  <div class="overlay">
+    <div class="text" id="text7"></div>
+    <button onclick="nextScreen(8)">Antes</button>
+    <button onclick="nextScreen(8)" style="margin-left: 10px;">Después</button>
+  </div>
 </div>
 
-<div id="screen8" class="screen" style="background-image: url('./img/furias.jpg');">
-  <div class="text" id="text8"></div>
+<div id="screen8" class="screen">
+  <video autoplay muted loop playsinline class="background-video rotate-horizontal">
+    <source src="./video/furias.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+  </video>
+  <div class="overlay">
+    <div class="text" id="text8"></div>
+  </div>
 </div>
 
 <script>
