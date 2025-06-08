@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invitación para Majo</title>
 
-  <!-- IMÁGENES USADAS (puedes reemplazarlas aquí) -->
-  <!-- Cielo estrellado: 1920x1080 -->
-  <!-- https://i.imgur.com/ZCxRmPV.jpg -->
-  <!-- Berk: 1920x1080 -->
-  <!-- https://i.imgur.com/qS9HnYv.jpg -->
-  <!-- Furia Nocturna y Luminosa: 1920x1080 -->
-  <!-- https://i.imgur.com/z8TevA1.jpg -->
+  <!-- ARCHIVOS DE IMAGEN EN CARPETA LOCAL (subir a GitHub) -->
+  <!-- Cielo estrellado (pantallas 1-4): ./img/cielo-estrellado.jpg -->
+  <!-- Berk (pantallas 5-6): ./img/berk.jpg -->
+  <!-- Furia Nocturna y Luminosa (pantallas 7-8): ./img/furias.jpg -->
 
   <style>
     body, html {
@@ -38,6 +35,8 @@
     .text {
       font-size: 1.5em;
       white-space: pre-wrap;
+      max-width: 90%;
+      line-height: 1.6em;
       margin-bottom: 20px;
     }
     button {
@@ -53,56 +52,56 @@
 </head>
 <body>
 
-<div id="screen1" class="screen visible" style="background-color:black;">
+<div id="screen1" class="screen visible" style="background-image: url('./img/cielo-estrellado.jpg');">
   <div class="text">Favor de reproducir esta canción en otra pestaña mientras continúas aquí
 <a href="https://music.youtube.com/watch?v=BM8gC3Oj0OA&si=nES7vB2EtxURgMg4" target="_blank" style="color: #87cefa; display: block; margin-top: 10px;">🎵 Escuchar canción</a></div>
   <button onclick="nextScreen(2)">Haz clic para continuar</button>
 </div>
 
-<div id="screen2" class="screen" style="background-image: url('https://i.imgur.com/ZCxRmPV.jpg');">
+<div id="screen2" class="screen" style="background-image: url('./img/cielo-estrellado.jpg');">
   <div class="text" id="text2"></div>
   <button onclick="nextScreen(3)">Haz clic para continuar</button>
 </div>
 
-<div id="screen3" class="screen">
+<div id="screen3" class="screen" style="background-image: url('./img/cielo-estrellado.jpg');">
   <div class="text" id="text3"></div>
   <button onclick="nextScreen(4)">Haz clic para continuar</button>
 </div>
 
-<div id="screen4" class="screen" style="background-image: url('https://i.imgur.com/qS9HnYv.jpg');">
+<div id="screen4" class="screen" style="background-image: url('./img/cielo-estrellado.jpg');">
   <div class="text" id="text4"></div>
   <button onclick="nextScreen(5)">Haz clic para continuar</button>
 </div>
 
-<div id="screen5" class="screen" style="background-image: url('https://i.imgur.com/z8TevA1.jpg');">
+<div id="screen5" class="screen" style="background-image: url('./img/berk.jpg');">
   <div class="text" id="text5"></div>
   <button onclick="nextScreen(7)">Sí me gustaría profe</button>
   <button onclick="nextScreen(6)" style="margin-left: 10px; background-color: crimson;">No quiero</button>
 </div>
 
-<div id="screen6" class="screen" style="background-image: url('https://i.imgur.com/z8TevA1.jpg');">
+<div id="screen6" class="screen" style="background-image: url('./img/berk.jpg');">
   <div class="text" id="text6"></div>
 </div>
 
-<div id="screen7" class="screen" style="background-image: url('https://i.imgur.com/z8TevA1.jpg');">
+<div id="screen7" class="screen" style="background-image: url('./img/furias.jpg');">
   <div class="text" id="text7"></div>
   <button onclick="nextScreen(8)">Antes</button>
   <button onclick="nextScreen(8)" style="margin-left: 10px;">Después</button>
 </div>
 
-<div id="screen8" class="screen" style="background-image: url('https://i.imgur.com/z8TevA1.jpg');">
+<div id="screen8" class="screen" style="background-image: url('./img/furias.jpg');">
   <div class="text" id="text8"></div>
 </div>
 
 <script>
 const texts = {
-  2: "Majo...\nHe querido decirte esto desde hace tiempo...\nMe encantaría invitarte a una cita muy especial...",
-  3: "Llevo esperando desde el 2023 por esto, nunca imaginé conocerte, pero ahora es una experiencia que no imagino sin ti",
-  4: "Y si vamos a volar, que sea contigo...",
-  5: "¿Te gustaría acompañarme este viernes 13 de junio a ver Cómo entrenar a tu dragón?",
-  6: "Lo entiendo...\nAun así, gracias por tu tiempo.\nCuídate mucho, Majo.",
-  7: "Ya compré las entradas y son alrededor de las 6 en plaza esfera, ¿te gustaría que pasemos a comer antes o después?",
-  8: "Espero con ansias verte (esta vez ya aprendí a registrar las respuestas jaja)"
+  2: "Majo...\n\nHe querido decirte esto desde hace tiempo...\n\nMe encantaría invitarte a una cita muy especial...",
+  3: "Llevo esperando desde el 2023 por esto...\n\nNunca imaginé conocerte,\npero ahora es una experiencia\nque no imagino sin ti.",
+  4: "Y si el destino ya está escrito,\n\nOjalá el mío sea contigo...",
+  5: "¿Te gustaría acompañarme\neste viernes 13 de junio a ver\n¿Cómo entrenar a tu dragón?",
+  6: "Lo entiendo...\n\nAun así, gracias por tu tiempo.\nCuídate mucho, Majo.",
+  7: "Ya compré las entradas\ny son alrededor de las 6 en Plaza Esfera.\n\n¿Te gustaría que pasemos a comer\nantes o después?",
+  8: "Espero con ansias verte\n(esta vez ya aprendí a registrar las respuestas jaja)"
 };
 
 function typeText(id, text, i = 0) {
