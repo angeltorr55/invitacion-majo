@@ -1,153 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Invitación Especial para Majo</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación para Majo</title>
+
+  <!-- IMÁGENES USADAS (puedes reemplazarlas aquí) -->
+  <!-- Cielo estrellado: 1920x1080 -->
+  <!-- https://i.imgur.com/ZCxRmPV.jpg -->
+  <!-- Berk: 1920x1080 -->
+  <!-- https://i.imgur.com/qS9HnYv.jpg -->
+  <!-- Furia Nocturna y Luminosa: 1920x1080 -->
+  <!-- https://i.imgur.com/z8TevA1.jpg -->
+
   <style>
-    * {
+    body, html {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Georgia', serif;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+      background-color: black;
     }
-    body, html {
-      height: 100%;
-      overflow: hidden;
-    }
-    .pantalla {
+    .screen {
       display: none;
       justify-content: center;
       align-items: center;
-      text-align: center;
       height: 100vh;
-      width: 100vw;
-      padding: 2rem;
-      transition: opacity 1s;
+      flex-direction: column;
+      background-size: cover;
+      background-position: center;
+      padding: 20px;
     }
-    .pantalla.visible {
+    .visible {
       display: flex;
-      animation: fadeIn 1s forwards;
     }
-    .pantalla p {
-      white-space: pre-line;
-      font-size: 1.5rem;
-      color: #fff;
-      background-color: rgba(0,0,0,0.5);
-      padding: 1rem;
-      border-radius: 10px;
-      max-width: 90%;
+    .text {
+      font-size: 1.5em;
+      white-space: pre-wrap;
+      margin-bottom: 20px;
     }
-    .pantalla button {
-      margin-top: 2rem;
-      padding: 1rem 2rem;
-      font-size: 1rem;
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
       border: none;
       border-radius: 10px;
+      background-color: #1e90ff;
+      color: white;
       cursor: pointer;
-      background-color: #f4d35e;
-      color: #000;
-      font-weight: bold;
-    }
-    .antiguo {
-      background: url('img/pergamino-textura.jpg') no-repeat center center/cover;
-      color: #3b2f2f;
-    }
-    .estrellas {
-      background: url('img/estrellas.jpg') no-repeat center center/cover;
-    }
-    .berk {
-      background: url('img/berk.jpg') no-repeat center center/cover;
-    }
-    .furias {
-      background: url('img/furias.jpg') no-repeat center center/cover;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="pantalla antiguo visible" id="pantalla1">
-    <div>
-      <p>Favor de reproducir esta canción en otra pestaña mientras continuas aquí:
-https://music.youtube.com/watch?v=BM8gC3Oj0OA&si=nES7vB2EtxURgMg4</p>
-      <button onclick="mostrarPantalla(2)">Haz clic para continuar</button>
-    </div>
-  </div>
 
-  <div class="pantalla estrellas" id="pantalla2">
-    <p id="texto2"></p>
-    <button onclick="mostrarPantalla(3)">Haz clic para continuar</button>
-  </div>
+<div id="screen1" class="screen visible" style="background-color:black;">
+  <div class="text">Favor de reproducir esta canción en otra pestaña mientras continúas aquí
+<a href="https://music.youtube.com/watch?v=BM8gC3Oj0OA&si=nES7vB2EtxURgMg4" target="_blank" style="color: #87cefa; display: block; margin-top: 10px;">🎵 Escuchar canción</a></div>
+  <button onclick="nextScreen(2)">Haz clic para continuar</button>
+</div>
 
-  <div class="pantalla" id="pantalla3" style="background-color: black;">
-    <p id="texto3"></p>
-    <button onclick="mostrarPantalla(4)">Haz clic para continuar</button>
-  </div>
+<div id="screen2" class="screen" style="background-image: url('https://i.imgur.com/ZCxRmPV.jpg');">
+  <div class="text" id="text2"></div>
+  <button onclick="nextScreen(3)">Haz clic para continuar</button>
+</div>
 
-  <div class="pantalla berk" id="pantalla4">
-    <p id="texto4"></p>
-    <button onclick="mostrarPantalla(5)">Haz clic para continuar</button>
-  </div>
+<div id="screen3" class="screen">
+  <div class="text" id="text3"></div>
+  <button onclick="nextScreen(4)">Haz clic para continuar</button>
+</div>
 
-  <div class="pantalla furias" id="pantalla5">
-    <p id="texto5"></p>
-    <button onclick="mostrarPantalla(7)">Si me gustaría profe</button>
-    <button onclick="mostrarPantalla(6)">No quiero</button>
-  </div>
+<div id="screen4" class="screen" style="background-image: url('https://i.imgur.com/qS9HnYv.jpg');">
+  <div class="text" id="text4"></div>
+  <button onclick="nextScreen(5)">Haz clic para continuar</button>
+</div>
 
-  <div class="pantalla furias" id="pantalla6">
-    <p id="texto6"></p>
-  </div>
+<div id="screen5" class="screen" style="background-image: url('https://i.imgur.com/z8TevA1.jpg');">
+  <div class="text" id="text5"></div>
+  <button onclick="nextScreen(7)">Sí me gustaría profe</button>
+  <button onclick="nextScreen(6)" style="margin-left: 10px; background-color: crimson;">No quiero</button>
+</div>
 
-  <div class="pantalla furias" id="pantalla7">
-    <p id="texto7"></p>
-    <button onclick="mostrarPantalla(8)">Antes</button>
-    <button onclick="mostrarPantalla(8)">Después</button>
-  </div>
+<div id="screen6" class="screen" style="background-image: url('https://i.imgur.com/z8TevA1.jpg');">
+  <div class="text" id="text6"></div>
+</div>
 
-  <div class="pantalla furias" id="pantalla8">
-    <p id="texto8"></p>
-  </div>
+<div id="screen7" class="screen" style="background-image: url('https://i.imgur.com/z8TevA1.jpg');">
+  <div class="text" id="text7"></div>
+  <button onclick="nextScreen(8)">Antes</button>
+  <button onclick="nextScreen(8)" style="margin-left: 10px;">Después</button>
+</div>
 
-  <script>
-    const textos = {
-      texto2: `Majo…\nHe querido decirte esto desde hace tiempo…\nMe encantaría invitarte a una cita muy especial…`,
-      texto3: `Llevo esperando desde el 2023 por esto, nunca imaginé conocerte, pero ahora es una experiencia que no imagino sin ti`,
-      texto4: `Y si vamos a volar, que sea contigo…`,
-      texto5: `Te gustaría acompañarme este viernes 13 de junio a ver ¿Cómo entrenar a tu dragón?`,
-      texto6: `Lo entiendo…\nAun así, gracias por tu tiempo.\nCuídate mucho, Majo.`,
-      texto7: `Ya compré las entradas y son alrededor de las 6 en plaza esfera, ¿te gustaría que pasemos a comer antes o después?`,
-      texto8: `Espero con ansias verte (esta vez ya aprendí a registrar las respuestas jaja)`
-    };
+<div id="screen8" class="screen" style="background-image: url('https://i.imgur.com/z8TevA1.jpg');">
+  <div class="text" id="text8"></div>
+</div>
 
-    function mostrarPantalla(num) {
-      document.querySelectorAll('.pantalla').forEach(p => p.classList.remove('visible'));
-      const actual = document.getElementById(`pantalla${num}`);
-      actual.classList.add('visible');
-      const p = actual.querySelector('p');
-      if (p && p.id && textos[p.id]) {
-        escribirTexto(p, textos[p.id]);
-      }
-    }
+<script>
+const texts = {
+  2: "Majo...\nHe querido decirte esto desde hace tiempo...\nMe encantaría invitarte a una cita muy especial...",
+  3: "Llevo esperando desde el 2023 por esto, nunca imaginé conocerte, pero ahora es una experiencia que no imagino sin ti",
+  4: "Y si vamos a volar, que sea contigo...",
+  5: "¿Te gustaría acompañarme este viernes 13 de junio a ver Cómo entrenar a tu dragón?",
+  6: "Lo entiendo...\nAun así, gracias por tu tiempo.\nCuídate mucho, Majo.",
+  7: "Ya compré las entradas y son alrededor de las 6 en plaza esfera, ¿te gustaría que pasemos a comer antes o después?",
+  8: "Espero con ansias verte (esta vez ya aprendí a registrar las respuestas jaja)"
+};
 
-    function escribirTexto(elemento, texto) {
-      elemento.innerText = '';
-      let i = 0;
-      const intervalo = setInterval(() => {
-        elemento.innerText += texto[i];
-        i++;
-        if (i >= texto.length) clearInterval(intervalo);
-      }, 50);
-    }
+function typeText(id, text, i = 0) {
+  if (i < text.length) {
+    document.getElementById("text" + id).innerText += text.charAt(i);
+    setTimeout(() => typeText(id, text, i + 1), 50);
+  }
+}
 
-    // Mostrar primer texto animado automáticamente
-    window.onload = () => {
-      escribirTexto(document.getElementById('pantalla2').querySelector('p'), textos['texto2']);
-    };
-  </script>
+function nextScreen(number) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('visible'));
+  const screen = document.getElementById("screen" + number);
+  screen.classList.add("visible");
+  if (texts[number]) {
+    document.getElementById("text" + number).innerText = "";
+    typeText(number, texts[number]);
+  }
+}
+</script>
 </body>
 </html>
